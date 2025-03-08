@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",                           // Modern JavaScript output
+    "useDefineForClassFields": true,              // Enables the new class field semantics
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],       // Includes necessary libs for web and modern JS
+    "allowJs": false,                             // Disallow JS files for stricter type-checking (set to true if needed)
+    "skipLibCheck": true,                         // Skip type checking of declaration files for faster builds
+    "esModuleInterop": true,                      // Enables compatibility between CommonJS and ES modules
+    "allowSyntheticDefaultImports": true,         // Allows default imports from modules with no default export
+    "strict": true,                               // Enable all strict type-checking options
+    "forceConsistentCasingInFileNames": true,     // Ensure file casing consistency
+    "module": "ESNext",                           // Use the latest module resolution (Vite uses ESM)
+    "moduleResolution": "Node",                   // Node.js style module resolution
+    "resolveJsonModule": true,                    // Import JSON modules as objects
+    "isolatedModules": true,                      // Ensure each file can be transpiled independently
+    "noEmit": true,                               // Disable emitting output files (handled by Vite)
+    "jsx": "react-jsx"                            // Use the new JSX transform for React 17+
+  },
+  "include": ["src"],                             // Include all files in the src directory
+  "exclude": ["node_modules", "dist"]             // Exclude dependencies and build output directories
+}

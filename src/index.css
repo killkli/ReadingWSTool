@@ -1,68 +1,60 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
+@plugin "daisyui";
+@custom-variant dark (&:where(.dark, .dark *));
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* 主幹概念詞 - 藍綠色調 */
+.annotation-main {
+  color: hsl(90, 75%, 40%);
+}
+.dark .annotation-main {
+  color: hsl(90, 75%, 60%);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* 修飾語 - 橙紅色調 */
+.annotation-modifier {
+  color: hsl(15, 60%, 40%);
 }
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.dark .annotation-modifier {
+  color: hsl(15, 60%, 60%);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* 連接詞 - 灰階 */
+.annotation-connector {
+  color: hsl(0, 0%, 50%);
+}
+.dark .annotation-connector {
+  color: hsl(0, 0%, 70%);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+/* 動詞類別 - 紫色調，用於表達動作 */
+.annotation-action {
+  color: hsl(270, 60%, 40%);
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.dark .annotation-action {
+  color: hsl(270, 60%, 60%);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* 感嘆詞 - 深紅色，強調語氣 */
+.annotation-interjection {
+  color: hsl(0, 80%, 40%);
+}
+.dark .annotation-interjection {
+  color: hsl(0, 80%, 60%);
+}
+
+/* 外文 - 藍色調，與主要內容區分 */
+.annotation-foreign {
+  color: hsl(220, 70%, 40%);
+  font-style: italic;
+}
+.dark .annotation-foreign {
+  color: hsl(220, 70%, 60%);
+}
+
+/* 標點符號 - 淺灰色，減少干擾 */
+.punctuation {
+  color: hsl(0, 0%, 70%);
+}
+.dark .punctuation {
+  color: hsl(0, 0%, 70%);
 }
