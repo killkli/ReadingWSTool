@@ -7,10 +7,6 @@ function App() {
   const [textInput, setTextInput] = useState(
     "這是一段測試用的文字\n試看看是否可用!",
   );
-  const worker = new Worker(new URL("./libs/Dict.worker.js", import.meta.url), {
-    type: "module",
-  });
-  console.log(worker);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -55,9 +51,9 @@ function App() {
           </div>
         </form>
       </dialog>
-      <div class="navbar shadow-sm bg-gray-300 dark:bg-gray-800">
-        <div class="navbar-start"></div>
-        <div class="navbar-center">
+      <div className="navbar shadow-sm bg-gray-300 dark:bg-gray-800">
+        <div className="navbar-start"></div>
+        <div className="navbar-center">
           <button
             className="btn"
             onClick={() =>
@@ -67,7 +63,7 @@ function App() {
             輸入文章內容
           </button>
         </div>
-        <div class="navbar-end">
+        <div className="navbar-end">
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors duration-200"
