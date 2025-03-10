@@ -33,9 +33,9 @@ self.addEventListener('message', async (event) => {
     try {
       const { text, queryId } = event.data; // 接收 queryId
       const result = await queryWord(text);
-      postMessage({ type: 'result', result, queryId: queryId }); // 回傳 queryId
+      postMessage({ type: 'result', result, queryId: queryId, text }); // 回傳 queryId
     } catch (error) {
-      postMessage({ type: 'error', error: error.message, queryId: queryId }); // 回傳 queryId
+      postMessage({ type: 'error', error: error.message, queryId: event.data.queryId }); // 回傳 queryId
     }
   }
 });

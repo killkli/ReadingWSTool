@@ -4,10 +4,12 @@
 
 /* 主幹概念詞 - 藍綠色調 */
 .annotation-main {
-  color: hsl(90, 75%, 40%);
+  color: hsl(240, 75%, 40%); /* Light blue */
 }
+
+
 .dark .annotation-main {
-  color: hsl(90, 75%, 60%);
+  color: hsl(240, 75%, 80%); /* Dark blue */
 }
 
 /* 修飾語 - 橙紅色調 */

@@ -1,5 +1,7 @@
 import DictWorker from './Dict.worker.js?worker';
 
+const localDict = new Map();
+
 const dictWorker = new DictWorker();
 
 // 儲存 Promise 的 resolve 函式，以便在收到 Worker 回應時呼叫
@@ -8,9 +10,10 @@ let queryIdCounter = 0;
 
 dictWorker.onmessage = (event) => {
   if (event.data.type === 'result') {
-    const { queryId, result } = event.data;
+    const { queryId, result, word } = event.data;
     const { resolve } = pendingQueries.get(queryId);
     if (resolve) {
+      localDict.set(word, result)
       resolve(result);
       pendingQueries.delete(queryId); // 清除已完成的查詢
     }
@@ -35,6 +38,10 @@ dictWorker.onerror = (error) => {
  */
 export const queryDictionary = (word) => {
   return new Promise((resolve, reject) => {
+    if (localDict.has(word)) {
+      resolve(localDict.get(word))
+      return;
+    }
     queryIdCounter++;
     const queryId = queryIdCounter;
     pendingQueries.set(queryId, { resolve, reject }); // 儲存 resolve 函式，key 為 queryId

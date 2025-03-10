@@ -6,7 +6,6 @@ export function DicWordSpan({ word, category }) {
 
   useEffect(() => {
     queryDictionary(word).then((res) => {
-      console.log(res);
       setDefText(res);
     });
   }, [word]);
