@@ -11,6 +11,9 @@ importers:
       '@huggingface/transformers':
         specifier: ^3.3.3
         version: 3.3.3
+      '@sqlite.org/sqlite-wasm':
+        specifier: 3.49.1-build2
+        version: 3.49.1-build2
       '@tailwindcss/vite':
         specifier: ^4.0.11
         version: 4.0.11(vite@6.2.1(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2))
@@ -622,6 +625,10 @@ packages:
     resolution: {integrity: sha512-AyleYRPU7+rgkMWbEh71fQlrzRfeP6SyMnRf9XX4fCdDPAJumdSBqYEcWPMzVQ4ScAl7E4oFfK0GUVn77xSwbw==}
     cpu: [x64]
     os: [win32]
+
+  '@sqlite.org/sqlite-wasm@3.49.1-build2':
+    resolution: {integrity: sha512-pZi8OSjNDZEYkvefsTOFKNRRN0GG9S5mtB6qBmrFZ5sraF5vxElPnTOl0DbJgiz9twlsOF5OzVkOce6Uc1TXsw==}
+    hasBin: true
 
   '@tailwindcss/node@4.0.11':
     resolution: {integrity: sha512-y1Ko/QaZh6Fv8sSOOPpRztT8nvNKSetvE4CLxsDdyY5kkBS7hKq04D3y3ldelniWe6YqRIzBHTzfAIc1hZ+0FA==}
@@ -1887,6 +1894,8 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.34.9':
     optional: true
+
+  '@sqlite.org/sqlite-wasm@3.49.1-build2': {}
 
   '@tailwindcss/node@4.0.11':
     dependencies:

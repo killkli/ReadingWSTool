@@ -10,19 +10,20 @@ function LongWord({ word }) {
 
 const PosText = ({ posedSentences }) => (
   <>
-    {posedSentences.map((s) => {
+    {posedSentences.map((s,idx) => {
       return (
-        <p>
-          {s.map((word) => {
+        <p key={`${s}_${idx}_${new Date().getTime()}`}>
+          {s.map((word,idx) => {
             const category = `${classifyTag(word.pos)}`;
+            const key = `${word}_${idx}_${new Date().getTime()}`;
             if (word.word.length > 1) {
               return (
-                <span className={category}>
+                <span className={category} key={key}>
                   <LongWord word={word.word} />
                 </span>
               );
             } else {
-              return <span className={category}>{word.word}</span>;
+              return <span className={category} key={key}>{word.word}</span>;
             }
           })}
         </p>

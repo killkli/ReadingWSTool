@@ -7,6 +7,10 @@ function App() {
   const [textInput, setTextInput] = useState(
     "這是一段測試用的文字\n試看看是否可用!",
   );
+  const worker = new Worker(new URL("./libs/Dict.worker.js", import.meta.url), {
+    type: "module",
+  });
+  console.log(worker);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -40,9 +44,8 @@ function App() {
               placeholder="請在此輸入文章...."
               className="textarea textarea-md w-full"
               rows="15"
-            >
-              {textInput}
-            </textarea>
+              defaultValue={textInput}
+            ></textarea>
           </div>
           <div className="modal-action">
             <button type="submit" className="btn btn-primary">
