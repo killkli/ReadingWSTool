@@ -5,7 +5,7 @@ const PosText = ({ posedSentences }) => (
   <>
     {posedSentences.map((s, idx) => {
       return (
-        <p key={`${s}_${idx}_${new Date().getTime()}`}>
+        <div key={`${s}_${idx}`}>
           {s.map((word, idx) => {
             const category = `${classifyTag(word.pos)}`;
             const key = `${word}_${idx}_${new Date().getTime()}`;
@@ -21,7 +21,7 @@ const PosText = ({ posedSentences }) => (
               );
             }
           })}
-        </p>
+        </div>
       );
     })}
   </>

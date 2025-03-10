@@ -4,25 +4,31 @@ import { useState, useEffect } from "react";
 export function DicWordSpan({ word, category }) {
   const [def_text, setDefText] = useState(null);
 
-  queryDictionary(word).then((res) => {
-    setDefText(JSON.stringify(res));
-  });
-
   useEffect(() => {
     queryDictionary(word).then((res) => {
-      setDefText(JSON.stringify(res));
+      console.log(res);
+      setDefText(res);
     });
   }, [word]);
 
   return (
-    <span className={"tooltip " + category}>
-      <span className="tooltip-content">
-        <span className="animate-bounce text-orange-400 -rotate-10 text-2xl font-black">
-          {def_text ?? "讀取中"}
-        </span>
+    <div className={"tooltip  tooltip-bottom " + category}>
+      <span className={"tooltip-content text-left"}>
+        <ol className="list">
+          {def_text instanceof Array
+            ? def_text.map((d, idx) => (
+                <li
+                  className="list-row"
+                  key={"def_" + word + Math.random() * idx * 100}
+                >
+                  {d.def}
+                </li>
+              ))
+            : null}
+        </ol>
       </span>
       <span className="font-extrabold">{word[0]}</span>
       {word.slice(1)}
-    </span>
+    </div>
   );
 }

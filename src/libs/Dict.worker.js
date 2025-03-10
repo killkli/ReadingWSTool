@@ -2,12 +2,16 @@ import sqlite3InitModule from '@sqlite.org/sqlite-wasm';
 
 /** @type {{db:null|import("@sqlite.org/sqlite-wasm").Database}} */
 const instance = {
-  db: null
+  db: null,
+  init_promise: null,
 }
 
 const queryWord = async (word) => {
   if (!instance.db) {
-    await initializeSQLite();
+    if (!instance.init_promise) {
+      instance.init_promise = initializeSQLite();
+    }
+    await instance.init_promise;
   }
   /** @type {import("@sqlite.org/sqlite-wasm").Database} */
   const db = instance.db;
@@ -27,14 +31,15 @@ const queryWord = async (word) => {
 self.addEventListener('message', async (event) => {
   if (event.data.type === 'query') {
     try {
-      const { text } = event.data;
+      const { text, queryId } = event.data; // 接收 queryId
       const result = await queryWord(text);
-      postMessage({ type: 'result', result });
+      postMessage({ type: 'result', result, queryId: queryId }); // 回傳 queryId
     } catch (error) {
-      postMessage({ type: 'error', error: error.message });
+      postMessage({ type: 'error', error: error.message, queryId: queryId }); // 回傳 queryId
     }
   }
 });
+
 
 const log = console.log;
 const error = console.error;
