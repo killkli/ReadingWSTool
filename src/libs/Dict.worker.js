@@ -51,7 +51,7 @@ const start = async () => {
   });
   log('Done initializing. Running demo...');
   log('Running SQLite3 version', sqlite3.version.libVersion);
-  const response = await fetch('/dict-revised.sqlite3');
+  const response = await fetch('/ReadingWSTool/dict-revised.sqlite3');
   if (!response.ok) {
     throw new Error(`Failed to fetch database: ${response.statusText}`);
   }
